@@ -88,6 +88,7 @@ becomes...
 ## Usage
 
 There are three different ways to use this library.
+(click to expand)
 
 <details>
 <summary><b>1. Djano template loaders</b></summary>
