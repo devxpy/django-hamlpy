@@ -89,8 +89,10 @@ becomes...
 
 There are three different ways to use this library.
 
-### Option 1: Template loaders
-
+<details>
+<summary><b>1. Djano template loaders</b></summary>
+<p>
+        
 These are Django template loaders which will convert any templates with `.haml` or `.hamlpy` extensions to regular 
 Django templates whenever they are requested by a Django view. To use them, add them to the list of template loaders in 
 your Django settings, e.g.
@@ -137,8 +139,15 @@ You can configure the Haml compiler with the following Django settings:
   * `HAMLPY_DJANGO_INLINE_STYLE` -- Whether to support `={...}` syntax for inline variables in addition to `#{...}`. 
      Defaults to `False`.
 
-### Option 2: Watcher
+   </p>
+</details>
 
+
+
+<details>
+<summary><b>2. File watcher CLI</b></summary>
+<p>
+        
 The library can also be used as a stand-alone program. There is a watcher script which will monitor Haml files in a 
 given directory and convert them to HTML as they are edited.
 
@@ -188,10 +197,16 @@ Then just include your Haml templates along with all the other files which conta
 
 ```bash
 python manage.py makemessages --extension haml,html,py,txt
-```
+```    
+</p>
+</details>
 
 
-### Option 3: IntelliJ file watcher
+<details>
+<summary><b>3. PyCharm file watcher</b></summary>
+<p>      
+
+This will configure your IDE to automatically compile files as-you-type.
 
 Save this script @ `<myproject>/scripts/compile_haml.py`
 
@@ -206,8 +221,6 @@ with open(sys.argv[1], "r") as f:
 ```
 
 Save this as `watcher.xml`, and click import button at file watcher settings.
-
-After this, haml files will automatically be compiled as you type.
 
 ```xml
 <TaskOptions>
@@ -233,6 +246,11 @@ After this, haml files will automatically be compiled as you type.
   </TaskOptions>
 </TaskOptions>
 ```
+
+</p>
+</details>
+
+
 
 ## Reference
 
