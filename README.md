@@ -87,7 +87,7 @@ becomes...
 
 ## Usage
 
-There are two different ways to use this library.
+There are three different ways to use this library.
 
 ### Option 1: Template loaders
 
@@ -188,6 +188,50 @@ Then just include your Haml templates along with all the other files which conta
 
 ```bash
 python manage.py makemessages --extension haml,html,py,txt
+```
+
+
+### Option 3: IntelliJ file watcher
+
+Save this script @ `<myproject>/scripts/compile_haml.py`
+
+```python
+import sys
+
+from hamlpy.compiler import Compiler
+
+
+with open(sys.argv[1], "r") as f:
+    print(Compiler().process(f.read()))
+```
+
+Save this as `watcher.xml`, and click import button at file watcher settings.
+
+After this, haml files will automatically be compiled as you type.
+
+```xml
+<TaskOptions>
+  <TaskOptions>
+    <option name="arguments" value="$ProjectFileDir$/scripts/compile_haml.py $FileName$" />
+    <option name="checkSyntaxErrors" value="true" />
+    <option name="description" />
+    <option name="exitCodeBehavior" value="ERROR" />
+    <option name="fileExtension" value="haml" />
+    <option name="immediateSync" value="true" />
+    <option name="name" value="Haml" />
+    <option name="output" value="$FileNameWithoutExtension$.html" />
+    <option name="outputFilters">
+      <array />
+    </option>
+    <option name="outputFromStdout" value="true" />
+    <option name="program" value="$PyInterpreterDirectory$/python" />
+    <option name="runOnExternalChanges" value="true" />
+    <option name="scopeName" value="Project Files" />
+    <option name="trackOnlyRoot" value="true" />
+    <option name="workingDir" value="$FileDir$" />
+    <envs />
+  </TaskOptions>
+</TaskOptions>
 ```
 
 ## Reference
